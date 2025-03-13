@@ -8,7 +8,7 @@ import { Roboto_500Medium } from "@expo-google-fonts/roboto";
 import { Lexend_400Regular } from "@expo-google-fonts/lexend";
 import { Stack } from "expo-router";
 import React from "react";
-import { ToastProvider } from "react-native-toast-notifications";
+import AppWrapper from "@/components/shared/app-wrapper";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,6 +24,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (fontLoaded) {
       SplashScreen.hideAsync();
+      console.log("Font Loaded Successfully ");
     }
   }, [fontLoaded]);
 
@@ -36,15 +37,14 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <ToastProvider placement="top">
+    <AppWrapper>
       <Stack
         screenOptions={{
           headerShown: false,
         }}
       >
         <Stack.Screen name="index" />
-        <Stack.Screen name="(routes)/home/index" />
       </Stack>
-    </ToastProvider>
+    </AppWrapper>
   );
 }
